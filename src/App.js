@@ -33,23 +33,22 @@ function App() {
   return (
     <ThemeProvider theme={theme[currentTheme]}>
       <GlobalStyle />
-
-      <NavbarRow>
-        <ThemeButton onClick={toggleTheme}>
-          {currentTheme === "light" ? "dark" : "light"} Mode
-        </ThemeButton>
-        <div>
-          {navbarItems.map((element) => (
-            <Navbar element={element} />
-          ))}
-        </div>
-      </NavbarRow>
-      <br/>
-      <br/>
       <BrowserRouter>
+        <NavbarRow>
+          <ThemeButton onClick={toggleTheme}>
+            {currentTheme === "light" ? "dark" : "light"} Mode
+          </ThemeButton>
+          <div>
+            {navbarItems.map((element) => (
+              <Navbar element={element} />
+            ))}
+          </div>
+        </NavbarRow>
+        <br />
+        <br />
         <Switch>
           <Route path="/" exact>
-              <Home />
+            <Home />
           </Route>
           <Route path="/home" exact>
             <Redirect to="/" />

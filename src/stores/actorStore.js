@@ -2,11 +2,12 @@ import axios from "axios";
 import { makeAutoObservable } from "mobx";
 
 class ActorAPIStore {
-  actors = "";
+  
 
   constructor() {
     makeAutoObservable(this);
   }
+  actors = [];
 
   fetchActor = async () => {
     const response = await axios.get("http://localhost:8000/actors");

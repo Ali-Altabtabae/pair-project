@@ -3,12 +3,12 @@ import React, { useState } from "react";
 import { ListWrapper } from "../styles";
 import SearchBar from "./SearchBar";
 import actorStore from "../stores/actorStore";
+import { observer } from "mobx-react";
 
 const ActorList = () => {
   const [query, setQuery] = useState("");
-  const actors = actorStore.actors;
-  const actorList = actors
-    .filter((actor) => actor.name.includes(query))
+  const actorList = actorStore.actors
+    .filter((actor) => actor.name.toLowerCase().includes(query.toLowerCase()))
     .map((element) => <ActorItem actor={element} key={element.id} />);
 
   return (
@@ -19,4 +19,4 @@ const ActorList = () => {
   );
 };
 
-export default ActorList;
+export default observer(ActorList);
